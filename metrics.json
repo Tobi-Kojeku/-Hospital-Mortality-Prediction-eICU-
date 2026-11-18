@@ -1,0 +1,17 @@
+{
+  "roc_auc": 0.6268126664693697,
+  "accuracy": 0.6927374301675978,
+  "threshold": 0.5,
+  "n_test": 358,
+  "confusion_matrix": [
+    [
+      235,
+      92
+    ],
+    [
+      18,
+      13
+    ]
+  ],
+  "classification_report": "              precision    recall  f1-score   support\n\n           0     0.9289    0.7187    0.8103       327\n           1     0.1238    0.4194    0.1912        31\n\n    accuracy                         0.6927       358\n   macro avg     0.5263    0.5690    0.5008       358\nweighted avg     0.8591    0.6927    0.7567       358\n"
+}

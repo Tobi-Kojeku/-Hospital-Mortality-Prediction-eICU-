@@ -1,0 +1,73 @@
+
+
+## Discussion
+### Model performance limitations
+The model demonstrates moderate discrimination (ROC AUC slightly above chance), but the ability to correctly identify mortality cases remains limited:
+- **Low recall for deaths** indicates the model misses many mortality events.
+- **Low precision** indicates many predicted deaths are false alarms.
+
+This pattern is expected for baseline models on imbalanced clinical data.
+
+### Why accuracy can look acceptable
+Accuracy is influenced by the majority class (alive). With class imbalance, a model may predict the majority class more often and still achieve a relatively high accuracy, while performing poorly on the minority class.
+
+---
+
+## How to interpret precision vs cost in practice
+In real hospital operations, the decision threshold is not inherently 0.5; it depends on the clinical and operational costs of errors.
+
+### Precision improvement (reduce false alarms)
+To improve **precision**:
+- increase the decision threshold so fewer patients are predicted as high-risk,
+- potentially use precision-oriented threshold selection and/or class-imbalance handling.
+
+Effect: fewer false alarms, but possibly lower recall.
+
+---
+
+### Cost-balanced approach (choose threshold by error cost)
+A cost-balanced approach selects the probability threshold based on the relative severity of:
+- **False Negatives** (missed deaths) — potentially high clinical risk
+- **False Positives** (unnecessary escalation) — operational cost, typically lower medical risk than missing a death
+
+A practical strategy is to sweep thresholds and select one that optimizes a defined cost function or an operational trade-off.
+
+---
+
+### Balanced F1 (trade-off between precision & recall)
+To balance precision and recall directly, this project tunes the operational threshold by:
+1. computing precision-recall across candidate thresholds,
+2. selecting the threshold that **maximizes F1-score** for mortality (Class 1).
+
+This provides a defensible threshold choice when precision and recall are both important.
+
+---
+
+## Reproducibility
+### Files created/used
+- SQL feature extraction and verification in `DBeaver`
+- Exported dataset:
+  - `eicu_features_6h_logreg.csv`
+
+### Running the code
+1. Place `eicu_v2_0_1.sqlite3` in the project directory (or update paths in the script).
+2. Run training/evaluation:
+   - `train_logreg.py`
+
+(If you want, I can add exact commands once you confirm your folder structure.)
+
+---
+
+## Future Work
+Potential improvements beyond this baseline:
+- stronger time-series/statistical feature engineering (beyond min aggregation)
+- class imbalance strategies (e.g., `class_weight`, threshold calibration)
+- calibration and decision-curve analysis (clinical threshold selection)
+- external validation and robustness checks
+- model comparison (e.g., tree-based models, regularized linear models)
+
+---
+
+## License
+Add your preferred license (e.g., MIT).  
+Include dataset usage notes per PhysioNet/eICU terms.
