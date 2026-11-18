@@ -1,0 +1,13 @@
+mortality-prediction-eicu/
+├─ eicu_v2_0_1.sqlite3
+├─ train_logreg.py
+├─ Code_SQL 
+│  ├─ Script.sql(label_query, sanity_check_rowcounts
+)
+├─ data/
+│  └─ eicu_features_6h_logreg.csv
+├─ results/
+│  ├─ classification_report.txt
+│  ├─ confusion_matrix.
+│  └─ metrics.json
+└─ README.md
