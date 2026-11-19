@@ -13,7 +13,7 @@ A **Logistic Regression** model is trained as a baseline classifier and evaluate
 
 ## Dataset
 - **Source:** PhysioNet eICU Collaborative Research Database Demo
-- **Local database (provided/exported):** `eicu_v2_0_1.sqlite3`
+- **Local database :** `eicu_v2_0_1.sqlite3`
 - **Task:** Predict **hospital mortality**
   - Target label is defined using `apachepatientresult`:
     - `y = 1` for **EXPIRED**
@@ -66,8 +66,6 @@ Selected laboratory features included:
   \hat{p}(y=1 \mid X)
   \]
 
----
-
 ### Evaluation Protocol
 Performance is assessed using:
 - **ROC AUC** to measure ranking/discrimination quality.
@@ -85,3 +83,18 @@ Class 1 corresponds to mortality (**EXPIRED**). Since mortality is relatively ra
 ### Confusion matrix (rows=true, cols=pred)
 [235  92]
 [ 18  13]
+
+## Acknowledgements
+This work uses the **eICU Collaborative Research Database Demo** and implements an end-to-end pipeline for predicting **hospital mortality** 
+
+## References 
+@article{PhysioNet-eicu-crd-demo-2.0.1,
+  author = {Johnson, Alistair and Pollard, Tom and Badawi, Omar and Raffa, Jesse},
+  title = {{eICU Collaborative Research Database Demo}},
+  journal = {{PhysioNet}},
+  year = {2021},
+  month = may,
+  note = {Version 2.0.1},
+  doi = {10.13026/4mxk-na84},
+  url = {https://doi.org/10.13026/4mxk-na84}
+}
