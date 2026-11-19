@@ -2,27 +2,27 @@
 # Hospital Mortality Prediction (eICU) — Logistic Regression Baseline
 
 ## Overview
-This project implements an end-to-end pipeline for predicting **hospital mortality** using the **eICU Collaborative Research Database Demo**.
-The goal is to forecast mortality from **time-windowed clinical features** derived from vitals and selected laboratory measurements.
+**This project implements an end-to-end pipeline for predicting hospital mortality using the eICU Collaborative Research Database Demo.
+The goal is to forecast mortality from time-windowed clinical features derived from vitals and selected laboratory measurements.
+**
+A Logistic Regression model is trained as a baseline classifier and evaluated using standard discrimination metrics (ROC AUC) and classification metrics (confusion matrix, precision/recall, F1).
 
-A **Logistic Regression** model is trained as a baseline classifier and evaluated using standard discrimination metrics (ROC AUC) and classification metrics (confusion matrix, precision/recall, F1).
-
-> **Note:** The achieved predictive performance is **not strong enough for clinical decision-making**. This work is intended primarily to demonstrate reproducible data extraction, feature construction, model training, and evaluation.
+> **Note:** The achieved predictive performance is not strong enough for clinical decision-making. This work is intended primarily to demonstrate reproducible data extraction, feature construction, model training, and evaluation.
 
 ---
 
 ## Dataset
 - **Source:** PhysioNet eICU Collaborative Research Database Demo
 - **Local database :** `eicu_v2_0_1.sqlite3`
-- **Task:** Predict **hospital mortality**
+- **Task:** Predict hospital mortality
   - Target label is defined using `apachepatientresult`:
     - `y = 1` for **EXPIRED**
     - `y = 0` for **ALIVE**
 
 ### Cohort construction (time-windowing)
-Features are extracted from the ICU stay by constructing a **6-hour window** summary:
-- **Vitamins:** minimum values over the window (e.g., `sys`, `hr`, `temp`, oxygenation measures, etc.)
-- **Labs:** selected laboratory variables summarised via aggregation over the same time window
+Features are extracted from the ICU stay by constructing a 6-hour window summary:
+- Vitamins: minimum values over the window (e.g., `sys`, `hr`, `temp`, oxygenation measures, etc.)
+- Labs: selected laboratory variables summarised via aggregation over the same time window
 
 Final modeling dataset:
 - Number of unique stays after label extraction: **1838**
@@ -31,7 +31,7 @@ Final modeling dataset:
 ---
 
 ## Features
-### Vitals (6-hour minimums)
+### Vitals (6-hour min)
 The vitals summary includes:
 - `sys`, `temp`, `sao2`, `rr`, `hr`, `cvp`, `etco2`, `dia`, `mean`
 - arterial pressure variables: `pa_sys`, `pa_dia`, `pa_mean`
@@ -68,8 +68,8 @@ Selected laboratory features included:
 
 ### Evaluation Protocol
 Performance is assessed using:
-- **ROC AUC** to measure ranking/discrimination quality.
-- **Classification metrics** (confusion matrix, precision, recall, F1) based on an operational threshold.
+- ROC AUC to measure ranking/discrimination quality.
+- Classification metrics (confusion matrix, precision, recall, F1) based on an operational threshold.
 
 Class 1 corresponds to mortality (**EXPIRED**). Since mortality is relatively rare, class-specific performance is emphasised.
 
@@ -85,7 +85,7 @@ Class 1 corresponds to mortality (**EXPIRED**). Since mortality is relatively ra
 [ 18  13]
 
 ## Acknowledgements
-This work uses the **eICU Collaborative Research Database Demo** and implements an end-to-end pipeline for predicting **hospital mortality** 
+This work uses the eICU Collaborative Research Database Demo and implements an end-to-end pipeline for predicting hospital mortality
 
 ## References 
 @article{PhysioNet-eicu-crd-demo-2.0.1,
@@ -98,3 +98,4 @@ This work uses the **eICU Collaborative Research Database Demo** and implements 
   doi = {10.13026/4mxk-na84},
   url = {https://doi.org/10.13026/4mxk-na84}
 }
+
