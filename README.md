@@ -25,8 +25,8 @@ Features are extracted from the ICU stay by constructing a 6-hour window summary
 - Labs: selected laboratory variables summarised via aggregation over the same time window
 
 Final modeling dataset:
-- Number of unique stays after label extraction: **1838**
-- After joining with the 6-hour minimum feature summaries: **1790 rows**
+- Number of unique stays after label extraction: 1838
+- After joining with the 6-hour minimum feature summaries: 1790 Obs
 
 ---
 
