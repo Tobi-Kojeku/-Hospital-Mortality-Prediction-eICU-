@@ -98,4 +98,3 @@ This work uses the eICU Collaborative Research Database Demo and implements an e
   doi = {10.13026/4mxk-na84},
   url = {https://doi.org/10.13026/4mxk-na84}
 }
-
